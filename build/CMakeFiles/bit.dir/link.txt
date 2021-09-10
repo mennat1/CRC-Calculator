@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbit.a CMakeFiles/bit.dir/bitString.c.o CMakeFiles/bit.dir/checkEndianness.c.o CMakeFiles/bit.dir/crc.c.o CMakeFiles/bit.dir/gettersAndSetters.c.o
+/usr/bin/ranlib libbit.a

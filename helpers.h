@@ -1,0 +1,22 @@
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define POLY0 0x864CFB
+#define POLY1 0x800063
+#define POLY2 0x1021
+#define POLY3 0x9B
+
+#define POLY0_CRC_nBYTES 3
+#define POLY1_CRC_nBYTES 3
+#define POLY2_CRC_nBYTES 2
+#define POLY3_CRC_nBYTES 1
+
+#define SHIFT_TO_BIG_ENDIAN_16_BIT(X) ((X & 0x00FF) << 8) | ((X & 0xFF00) >> 8)
+
+#define SHIFT_TO_BIG_ENDIAN_32_BIT(X) ((((SHIFT_TO_BIG_ENDIAN_16_BIT((X & 0x0000FFFF))) & 0x0000FFFF) << 16) | (((SHIFT_TO_BIG_ENDIAN_16_BIT(((X & 0xFFFF0000) >> 16))) & 0x0000FFFF)))
+
+#define SHIFT_TO_BIG_ENDIAN_64_BIT(X) ((((SHIFT_TO_BIG_ENDIAN_32_BIT((X & 0x00000000FFFFFFFF))) & 0x00000000FFFFFFFF) << 32) | (((SHIFT_TO_BIG_ENDIAN_32_BIT(((X & 0xFFFFFFFF00000000) >> 32))) & 0x00000000FFFFFFFF)))
+
+//0x 11 22 33 44 55 66 77 88 11 22 33 44 55 66 77 88;
